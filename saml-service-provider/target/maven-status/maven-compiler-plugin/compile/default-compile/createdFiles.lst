@@ -1,0 +1,5 @@
+com/bigbank/sp/AuthFilter.class
+com/bigbank/sp/SAMLServlet.class
+com/bigbank/sp/utils/BigbankSPUtil.class
+com/bigbank/sp/Endpoints.class
+com/bigbank/sp/BigbankSP.class

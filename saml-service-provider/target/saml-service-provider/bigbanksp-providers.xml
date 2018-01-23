@@ -1,0 +1,94 @@
+<EntitiesDescriptor 
+    xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:mdalg="urn:oasis:names:tc:SAML:metadata:algsupport" xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui"
+    xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- This file contains the metadata for the testing custom SP against Shibboleth IDP. -->
+
+    <EntityDescriptor entityID="http://ussuhvin0241.egeng.info:8080/BIGBANKSP">
+
+        <Extensions> 
+            <mdalg:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/>
+            <mdalg:DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#sha384"/>
+            <mdalg:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+            <mdalg:DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#sha224"/>
+            <mdalg:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha224"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha384"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2009/xmldsig11#dsa-sha256"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <mdalg:SigningMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/>
+        </Extensions>
+
+        
+        <!-- An SP supporting SAML 1 and 2 contains this element with protocol support as shown. -->
+        <SPSSODescriptor
+            protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol urn:oasis:names:tc:SAML:1.1:protocol http://schemas.xmlsoap.org/ws/2003/07/secext">
+
+            <Extensions>
+                <init:RequestInitiator xmlns:init="urn:oasis:names:tc:SAML:profiles:SSO:request-init" Binding="urn:oasis:names:tc:SAML:profiles:SSO:request-init" Location="http://ussuhvin0241.egeng.info:8080/SAMLSP/loginViaIDP.jsp"/>
+ 
+                <mdui:UIInfo>
+                    <mdui:DisplayName xml:lang="en">BigBank Service Provider</mdui:DisplayName>
+                    <mdui:Description xml:lang="en">BigBank Service Provider</mdui:Description>
+                 </mdui:UIInfo>
+            </Extensions>
+
+            <KeyDescriptor>
+                <ds:KeyInfo>
+                    <ds:X509Data>
+                        <ds:X509Certificate>LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlEZ3pDQ0FtdWdBd0lCQWdJRUxrdG8wVEFOQmdrcWhraUc5dzBCQVFzRkFEQnlNUXN3Q1FZRFZRUUdFd0pWDQpVekVMTUFrR0ExVUVDQk1DUTBFeEZUQVRCZ05WQkFjVERGTmhia1p5WVc1amFYTmpiekVRTUE0R0ExVUVDaE1IDQpRbWxuUW1GdWF6RUxNQWtHQTFVRUN4TUNTVlF4SURBZUJnTlZCQU1URjFObGNuWnBZMlZRY205MmFXUmxjaUJODQpZV05vYVc1bE1CNFhEVEU0TURFd09EQTNORGd3T1ZvWERURTRNRFF3T0RBM05EZ3dPVm93Y2pFTE1Ba0dBMVVFDQpCaE1DVlZNeEN6QUpCZ05WQkFnVEFrTkJNUlV3RXdZRFZRUUhFd3hUWVc1R2NtRnVZMmx6WTI4eEVEQU9CZ05WDQpCQW9UQjBKcFowSmhibXN4Q3pBSkJnTlZCQXNUQWtsVU1TQXdIZ1lEVlFRREV4ZFRaWEoyYVdObFVISnZkbWxrDQpaWElnVFdGamFHbHVaVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFPVkkyejUyDQp0YjNHRXZSU1lTWXdNUi9BRHREL1Y3dDBxT3Q0ODNuZXg3OHo1QzVxRDBCNTVYeUNCaG5DVzFJcFA1N3IxQ2daDQpnTXJJZmxWY3E0SXZRbGUxbXd2MkdtaitvWUtWbDZJOVZJTk8zUyt2Uzk4cE1wTEpJMHBFbUJ0ZFEzNUVZdTBHDQpVK29lbjNyUitkcTR2SFpEQWFXR1N2aUJuT09tMkhrM3lRM3NRWHhYd1JodkZRYmRwTy9mbFJCeGU2YkJoVFNNDQpycEM4RjdpVFJ0d0RXbVZvbGxzdkdweU1RRStvVDkxYlhqU0x2eE1lWGJJUVgyM0cwKzBTbFNCTDhmSEFBMG5JDQpjbDByOXlrWFpublJISEFmTHNoL0xwK1dpUXdTSzJPYjB5M2FnYVdtaVNkb1A5TlNoOUlnaFJHMmxTR1NKR21NDQozNnhmdFp6RlVnMlQ3d2tDQXdFQUFhTWhNQjh3SFFZRFZSME9CQllFRks2SUxyM3BMS0NWdE0wYTBYRnMxeDZ0DQp1MmlETUEwR0NTcUdTSWIzRFFFQkN3VUFBNElCQVFDSUhnbEkrYVBySVhtcE5yVHc5Wkw1ZW9JNHo2QXNUcm9CDQpqSEFkN1o3bS9KWEJhVTk3aXF0cmxwQXNzZmdVMi9Ha1dGamR1V1NiU1VENlZYVEI4dFZjODVic1ZuM2I5emhTDQpETFZIZnBVUWpzMHZNTHd3LzdIS2lONnJtNVNNRHE1OGRaaU0yNFV6c1pUMm1xM1VUQUpBbEQwYURVSS8vaFJGDQptdThBTGQxSHhYdmlzWkdGczZjRjY2WDFoZ0VaMlRERC9wNXRERVEvcms3TytKb0x0NmV3UDhFdWEzV0JLejQ0DQpQK3hUVmh4eElCZkF4amhDZ3B0endQODB1M2FQcGFlT05rYVd5MkxlUU1NNEY5bUZmaG1DczVoODVNdHV1eXNaDQpocmh6cEdnQzhhMENwZEhjQnlpazhqenJSZXJ1emJRVDZ5enQyTGpFa2xUT1FDQ1hmYVpjDQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t</ds:X509Certificate>
+                    </ds:X509Data>
+                </ds:KeyInfo>
+                <EncryptionMethod Algorithm="http://www.w3.org/2009/xmlenc11#aes128-gcm"/>
+                <EncryptionMethod Algorithm="http://www.w3.org/2009/xmlenc11#aes192-gcm"/>
+                <EncryptionMethod Algorithm="http://www.w3.org/2009/xmlenc11#aes256-gcm"/>
+                <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc"/>
+                <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes192-cbc"/>
+                <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc"/>
+                <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc"/>
+                <EncryptionMethod Algorithm="http://www.w3.org/2009/xmlenc11#rsa-oaep"/>
+                <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"/>
+            </KeyDescriptor>
+
+            <!-- This tells IdPs that you only need transient identifiers. -->
+            <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+            <NameIDFormat>urn:mace:shibboleth:1.0:nameIdentifier</NameIDFormat>
+
+            <!--
+				This tells IdPs where and how to send authentication assertions. Mostly
+				the SP will tell the IdP what location to use in its request, but this
+				is how the IdP validates the location and also figures out which
+				SAML version/binding to use.
+			-->
+
+            <AssertionConsumerService index="1" isDefault="true"
+                Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+                Location="http://ussuhvin0241.egeng.info:8080/BIGBANKSP/SAMLServlet"/>
+     
+
+        </SPSSODescriptor>
+
+        <!-- This is just information about the entity in human terms. -->
+        <Organization>
+            <OrganizationName xml:lang="en">BigBank</OrganizationName>
+            <OrganizationDisplayName xml:lang="en">BigBank</OrganizationDisplayName>
+            <OrganizationURL xml:lang="en">http://ussuhvin0241.egeng.info:8080/BIGBANKSP/index.html</OrganizationURL>
+        </Organization>
+        <ContactPerson contactType="technical">
+            <GivenName>Company</GivenName>
+            <SurName>User</SurName>
+            <EmailAddress>companyuser@bigbank.com</EmailAddress>
+        </ContactPerson>
+
+    </EntityDescriptor>
+
+
+</EntitiesDescriptor>
+
