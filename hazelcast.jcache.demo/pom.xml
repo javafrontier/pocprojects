@@ -17,6 +17,7 @@
 		<junit.version>4.11</junit.version>
 		<jcache.version>1.1.0</jcache.version>
 		<hazelcast.version>3.11</hazelcast.version>
+		<mongo-java-driver.version>3.11.0-beta4</mongo-java-driver.version> 
 	</properties>
 
   <build>
@@ -42,9 +43,14 @@
 		</dependency>
 		<dependency>
 	 		<groupId>com.hazelcast</groupId>
-	  		<artifactId>hazelcast-client</artifactId>
+	  		<artifactId>hazelcast-all</artifactId>
 	 		<version>${hazelcast.version}</version>
 		</dependency>
+		<dependency>
+	    	<groupId>org.mongodb</groupId>
+	    	<artifactId>mongo-java-driver</artifactId>
+	    	<version>${mongo-java-driver.version}</version>
+		</dependency> 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

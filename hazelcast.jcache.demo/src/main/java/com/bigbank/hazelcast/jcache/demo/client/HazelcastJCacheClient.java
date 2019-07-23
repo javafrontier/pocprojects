@@ -1,6 +1,7 @@
 package com.bigbank.hazelcast.jcache.demo.client;
 
 import java.net.URI;
+
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,8 +94,7 @@ public class HazelcastJCacheClient
 		Properties properties = new Properties();
 		properties.setProperty("hazelcast.instance.name", instance.getName());
 		
-		cacheManager = cachingProvider.getCacheManager(managerName,null,properties);
-		
+		cacheManager = cachingProvider.getCacheManager(managerName,null,properties);		
 	}
 	
 	/**

@@ -3,16 +3,21 @@ package com.bigbank.hazelcast.jcache.demo.server;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.cache.Cache;
 import javax.cache.CacheException;
 import javax.cache.CacheManager;
 import javax.cache.Caching;
+import javax.cache.configuration.FactoryBuilder;
 import javax.cache.spi.CachingProvider;
-
 import com.bigbank.hazelcast.jcache.demo.HazelcastInstanceManager;
+import com.bigbank.hazelcast.jcache.integration.FileCacheLoader;
+import com.bigbank.hazelcast.jcache.integration.FileCacheWriter;
+import com.bigbank.hazelcast.jcache.integration.MongoDBCacheLoader;
+import com.bigbank.hazelcast.jcache.integration.MongoDBCacheWriter;
+import com.bigbank.mongoDB.MongoDBManager;
 import com.hazelcast.cache.HazelcastCachingProvider;
 import com.hazelcast.config.CacheConfig;
 import com.hazelcast.config.InMemoryFormat;
@@ -56,7 +61,7 @@ public class HazelcastJCacheEmbedded
 	 * 
 	 * @return cache config object
 	 */
-	private CacheConfig<Object, Object> createCacheConfig()
+	private CacheConfig<Object, Object> createCacheConfig(String cacheName)
 	{
 		// create a cache where both key and value will be stored as object object
 		CacheConfig<Object, Object> configObj = (CacheConfig<Object, Object>) new CacheConfig<Object, Object>().setTypes(Object.class, Object.class);
@@ -64,6 +69,11 @@ public class HazelcastJCacheEmbedded
 		configObj.setStatisticsEnabled(true);
 		// storing BINARY format
 		configObj.setInMemoryFormat(InMemoryFormat.BINARY);
+		// configure cache for read-write-through
+		configObj.setWriteThrough(true);
+		configObj.setCacheWriterFactory(FactoryBuilder.factoryOf(new MongoDBCacheWriter(cacheName)));
+		configObj.setReadThrough(true);
+		configObj.setCacheLoaderFactory(FactoryBuilder.factoryOf(new MongoDBCacheLoader(cacheName)));
 		return configObj;
 		
 	}
@@ -79,7 +89,7 @@ public class HazelcastJCacheEmbedded
 			if(cache == null)
 			{
 				// create cache
-				cache = cacheManager.createCache(cacheName, createCacheConfig());
+				cache = cacheManager.createCache(cacheName, createCacheConfig(cacheName));
 			}			
 		}
 		else
@@ -114,17 +124,29 @@ public class HazelcastJCacheEmbedded
 		cachingProvider.close();
 		
 	}
-	
+
 	public static void main(String[] args)
 	{
+		MongoDBManager.getInstance();
 		HazelcastJCacheEmbedded jCacheEmbedded = new HazelcastJCacheEmbedded();
-		logger.info("Cache Entry before put "+ jCacheEmbedded.get(cacheName, "hello"));
-		jCacheEmbedded.put("testCache", "hello", "world");
-		logger.info("Cache Entry after put "+ jCacheEmbedded.get(cacheName, "hello"));
-		jCacheEmbedded.remove("testCache", "hello");
-		logger.info("Cache Entry after remove "+ jCacheEmbedded.get(cacheName, "hello"));
-		
+		int count = 1;
+		while(count <5)
+		{
+			logger.info("Key"+count+jCacheEmbedded.get(cacheName, "Key"+count));
+			logger.info("Putting:"+"Key"+count);
+			jCacheEmbedded.put(cacheName, "Key"+count, "Value"+count);
+			try
+			{
+				TimeUnit.SECONDS.sleep(1);
+			}
+			catch (InterruptedException e)
+			{
+				logger.logp(Level.SEVERE, HazelcastJCacheEmbedded.class.getName(), "main()", "Thread Interrupted", e);
+			}
+			count++;
+		}
 		jCacheEmbedded.closeCacheManager();	
 		HazelcastInstanceManager.getHazelcastInstance().shutdown();
+		MongoDBManager.getInstance().shutdownClient();
 	}
 }

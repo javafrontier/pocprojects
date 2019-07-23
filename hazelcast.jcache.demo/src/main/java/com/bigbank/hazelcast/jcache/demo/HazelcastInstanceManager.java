@@ -2,6 +2,7 @@ package com.bigbank.hazelcast.jcache.demo;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.bigbank.mongoDB.MongoDBManager;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.JoinConfig;
 import com.hazelcast.config.ListenerConfig;
@@ -19,6 +20,7 @@ import com.hazelcast.core.LifecycleListener;
  */
 public class HazelcastInstanceManager
 {
+	private static HazelcastInstance hzInstance = null;
 	static Logger logger = Logger.getLogger(HazelcastInstanceManager.class.getName());
 	private static Config prepareHazelcastConfiguration()
 	{
@@ -60,18 +62,23 @@ public class HazelcastInstanceManager
 		return Hazelcast.newHazelcastInstance(config);
 		
 	}
-	public static void main(String[] args)
+	public static HazelcastInstance getHazelcastInstance()
 	{
-		// Create hazelcast instance
-		try
+		if(hzInstance == null)
 		{
-			HazelcastInstanceManager.createAndStartHazelcastInstance();
+			try
+			{
+				hzInstance = HazelcastInstanceManager.createAndStartHazelcastInstance();
+			}
+			catch (Exception e)
+			{
+				logger.logp(Level.SEVERE, HazelcastInstanceManager.class.getName(), "main", "Fail to create Hazelcast Instance", e);
+			}
 		}
-		catch (Exception e)
-		{
-			logger.logp(Level.SEVERE, HazelcastInstanceManager.class.getName(), "main", "Fail to create Hazelcast Instance", e);
-		}
-
+		return hzInstance;
 	}
-
+	public static void main(String[] args)
+	{		
+		HazelcastInstanceManager.getHazelcastInstance();
+	}
 }
