@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.bigbank</groupId>
+  <artifactId>tink.demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>tink.demo</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
+	<jdk.version>1.8</jdk.version>
+	<tink.version>1.2.2</tink.version>
+	<junit.version>4.11</junit.version>
+	<jackson.version>2.6.0</jackson.version>
+	<jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>	
+	<jaxb-core.version>2.3.0.1</jaxb-core.version>
+	<activation.version>1.1.1</activation.version>
+	<jaxb.version>2.4.0-b180830.0438</jaxb.version>
+  </properties>
+  
+  <build>
+	  	<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+				    <source>${jdk.version}</source>
+				    <target>${jdk.version}</target>
+				    <encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+	  	</plugins>
+	</build>
+
+  <dependencies>
+    	<dependency>
+  			<groupId>com.google.crypto.tink</groupId>
+  			<artifactId>tink</artifactId>
+  			<version>${tink.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>io.grpc</groupId>
+    		<artifactId>grpc-protobuf</artifactId>
+    		<version>1.16.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-iam -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-iam</artifactId>
+		    <version>1.11.116</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.apache.httpcomponents</groupId>
+		  <artifactId>httpclient</artifactId>
+		  <version>4.5.2</version>
+		</dependency>
+		<dependency>
+	    	<groupId>javax.xml.bind</groupId>
+	    	<artifactId>jaxb-api</artifactId>
+	    	<version>${jaxb-api.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.xml.bind</groupId>
+		    <artifactId>jaxb-core</artifactId>
+		    <version>${jaxb-core.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.xml.bind</groupId>
+		    <artifactId>jaxb-impl</artifactId>
+		    <version>${jaxb.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.activation</groupId>
+		    <artifactId>activation</artifactId>
+		    <version>${activation.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+  </dependencies>
+</project>

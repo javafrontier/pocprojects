@@ -1,0 +1,12 @@
+{
+    "keysetInfo": {
+        "primaryKeyId": 1393223679,
+        "keyInfo": [{
+            "typeUrl": "type.googleapis.com/google.crypto.tink.KmsEnvelopeAeadKey",
+            "outputPrefixType": "TINK",
+            "keyId": 1393223679,
+            "status": "ENABLED"
+        }]
+    },
+    "encryptedKeyset": "AQICAHj8zdS8XBEUf7XJggd2Dxocb3KMsk4I98P405eK9sgDOAHe19JurcmDKjxZ7PZ5J5+sAAABUjCCAU4GCSqGSIb3DQEHBqCCAT8wggE7AgEAMIIBNAYJKoZIhvcNAQcBMB4GCWCGSAFlAwQBLjARBAyfEnHnr8Zjg2XbEl0CARCAggEF4PdofGoeF/S/BqLVxg09hD+6PrQF+LaHnxpnH6H47HT+5SQXIEkcjwuRcVq1wfmbcrP7QxkzOWnY3jahZfRykk8sCAG2uSLB8SY9SKaoeGMOZ9Vc8SRw7e9qv85imTUQFqiVad5FYAfs8fOstgpYe5HK0zP+lhTUzFtToevUbfKEtGd/8baLTxxLg30T/DSsWUwmU3Mxq0PTTQNT9ubB/3roUndOwCG2cjN2YdN/qSfpJztos2S1Tf/YsnTMIY3HVeBgqag0CO6lAmfCc+QFtt++XTnH+FK3upxeS6eA4kHahB7uTFNLLErmsGlLYFrDQ1UEBGCxIgFDbRUiZau6pJYTESCv"
+}
