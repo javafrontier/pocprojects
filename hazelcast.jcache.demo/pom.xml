@@ -14,7 +14,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
 		<jdk.version>1.8</jdk.version>
-		<junit.version>4.11</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<jcache.version>1.1.0</jcache.version>
 		<hazelcast.version>3.11</hazelcast.version>
 		<mongo-java-driver.version>3.11.0-beta4</mongo-java-driver.version> 
