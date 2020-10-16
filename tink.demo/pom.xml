@@ -14,7 +14,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
 	<jdk.version>1.8</jdk.version>
-	<tink.version>1.2.2</tink.version>
+	<tink.version>1.5.0</tink.version>
 	<junit.version>4.11</junit.version>
 	<jackson.version>2.6.0</jackson.version>
 	<jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>	
